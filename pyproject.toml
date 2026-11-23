@@ -10,7 +10,7 @@ description = "Warehouse-backed retail forecasting and inventory decision refere
 dependencies = ["numpy==2.3.5", "scikit-learn==1.8.0", "joblib==1.5.3"]
 
 [project.optional-dependencies]
-dev = ["pyflakes==3.4.0"]
+dev = ["pyflakes==4.1.0"]
 
 [project.scripts]
 retail-run = "retail_decisions.pipeline:main"
