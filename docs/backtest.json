@@ -1,0 +1,76 @@
+{
+  "one_day_inventory_scenario": {
+    "selected": {
+      "opportunities": 385,
+      "short_units": 175,
+      "excess_units": 2127,
+      "shortage_days": 52,
+      "assumed_lost_margin_eur": 3.0,
+      "assumed_excess_cost_eur": 0.6,
+      "buffer_units": 4.301397285296094,
+      "scenario_cost_eur": 1801.2
+    },
+    "seasonal": {
+      "opportunities": 385,
+      "short_units": 155,
+      "excess_units": 3523,
+      "shortage_days": 35,
+      "assumed_lost_margin_eur": 3.0,
+      "assumed_excess_cost_eur": 0.6,
+      "buffer_units": 8.0,
+      "scenario_cost_eur": 2578.8
+    }
+  },
+  "test_by_promotion": {
+    "regular": {
+      "mae": 4.072836082500219,
+      "wmape": 0.2108433362595918,
+      "bias": 0.25732637570204947,
+      "n": 385
+    }
+  },
+  "holdout_seasonal_naive": {
+    "mae": 5.490909090909091,
+    "wmape": 0.28425440365738874,
+    "bias": 0.7480519480519481,
+    "n": 385
+  },
+  "dataset": "synthetic store-SKU daily observed sales",
+  "model_version": "retail-forecast-v1",
+  "feature_names": [
+    "lag_1",
+    "lag_7",
+    "rolling_7",
+    "weekday",
+    "promo_planned",
+    "price_eur"
+  ],
+  "train_end_exclusive": "2026-05-18",
+  "validation_end_exclusive": "2026-06-08",
+  "test_end_inclusive": "2026-06-29",
+  "row_counts": {
+    "train": 2280,
+    "validation": 368,
+    "test": 385
+  },
+  "validation_random_forest": {
+    "mae": 4.146147774204752,
+    "wmape": 0.2112979339298364,
+    "bias": 0.47527528190155016,
+    "n": 368
+  },
+  "validation_seasonal_naive": {
+    "mae": 6.383152173913044,
+    "wmape": 0.3253012048192771,
+    "bias": 0.6331521739130435,
+    "n": 368
+  },
+  "selected_champion": "random_forest",
+  "holdout_test": {
+    "mae": 4.072836082500219,
+    "wmape": 0.2108433362595918,
+    "bias": 0.25732637570204947,
+    "n": 385
+  },
+  "evaluation_scope": "one-step ahead with prior observed sales known; excludes stockout targets"
+}

@@ -1,0 +1,62 @@
+Local execution | Python 3.12.14 | Linux
+
+$ python -m unittest discover -s tests -v
+test_buffer_follows_cost_ratio (test_policy.PolicyTests.test_buffer_follows_cost_ratio) ... ok
+test_units_and_euros (test_policy.PolicyTests.test_units_and_euros) ... ok
+test_backtest_untouched_chronological_holdout (test_retail.PlatformTests.test_backtest_untouched_chronological_holdout) ... ok
+test_full_pipeline (test_retail.PlatformTests.test_full_pipeline) ... ok
+test_gold_features_use_only_prior_sales (test_retail.PlatformTests.test_gold_features_use_only_prior_sales) ... ok
+test_ingestion_idempotent_and_domain_checks (test_retail.PlatformTests.test_ingestion_idempotent_and_domain_checks) ... ok
+test_metrics_and_reordering (test_retail.PlatformTests.test_metrics_and_reordering) ... ok
+test_quality_catches_gaps (test_retail.PlatformTests.test_quality_catches_gaps) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.263s
+
+OK
+exit 0
+
+$ python -m pyflakes src tests scripts
+
+exit 0
+
+$ python -m compileall -q src scripts tests
+
+exit 0
+
+$ python scripts/demo.py
+{
+  "rows": 3240,
+  "replay_inserted": 0,
+  "holdout": {
+    "mae": 4.072836082500219,
+    "wmape": 0.2108433362595918,
+    "bias": 0.25732637570204947,
+    "n": 385
+  },
+  "policy": {
+    "selected": {
+      "opportunities": 385,
+      "short_units": 175,
+      "excess_units": 2127,
+      "shortage_days": 52,
+      "assumed_lost_margin_eur": 3.0,
+      "assumed_excess_cost_eur": 0.6,
+      "buffer_units": 4.301397285296094,
+      "scenario_cost_eur": 1801.2
+    },
+    "seasonal": {
+      "opportunities": 385,
+      "short_units": 155,
+      "excess_units": 3523,
+      "shortage_days": 35,
+      "assumed_lost_margin_eur": 3.0,
+      "assumed_excess_cost_eur": 0.6,
+      "buffer_units": 8.0,
+      "scenario_cost_eur": 2578.8
+    }
+  }
+}
+exit 0
+
+Second independent demo run: matching decision outputs (elapsed timings excluded).
